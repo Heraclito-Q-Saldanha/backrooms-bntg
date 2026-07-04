@@ -8,3 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 godot = "0.5.4"
+steamworks = "0.13.1"

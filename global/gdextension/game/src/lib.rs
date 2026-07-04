@@ -1,4 +1,5 @@
 mod main_menu;
+mod steam;
 
 use godot::prelude::*;
 
