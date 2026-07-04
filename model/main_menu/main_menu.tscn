@@ -1,8 +1,45 @@
 [gd_scene format=3 uid="uid://cgv08mna5b8oh"]
 
-[node name="MainMenu" type="MainMenu" unique_id=620897725]
+[node name="main_menu" type="MainMenu" unique_id=620897725]
+game_scene = "res://model/game/game.tscn"
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="background_color" type="ColorRect" parent="." unique_id=625648165]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(9.400537e-09, 0.006555851, 0.015155967, 1)
+
+[node name="margin_container" type="MarginContainer" parent="." unique_id=37750993]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 250
+
+[node name="vertical_container" type="VBoxContainer" parent="margin_container" unique_id=740161005]
+layout_mode = 2
+alignment = 1
+
+[node name="play_button" type="Button" parent="margin_container/vertical_container" unique_id=1247541703]
+layout_mode = 2
+text = "Play"
+
+[node name="exit_button" type="Button" parent="margin_container/vertical_container" unique_id=1430082829]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="button_up" from="margin_container/vertical_container/play_button" to="." method="start_game"]
+[connection signal="button_up" from="margin_container/vertical_container/exit_button" to="." method="exit_game"]

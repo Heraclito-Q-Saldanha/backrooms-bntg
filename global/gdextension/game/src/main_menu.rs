@@ -4,13 +4,29 @@ use godot::prelude::*;
 #[derive(GodotClass)]
 #[class(base=Control)]
 struct MainMenu {
+    #[export]
+    game_scene: GString,
     base: Base<Control>,
 }
 
 #[godot_api]
 impl IControl for MainMenu {
     fn init(base: Base<Control>) -> Self {
-        godot_print!("Hello, world!");
-        Self { base }
+        let game_scene = GString::new();
+        Self { game_scene, base }
+    }
+}
+
+#[godot_api]
+impl MainMenu {
+    #[func]
+    fn start_game(&self) {
+        self.base()
+            .get_tree()
+            .change_scene_to_file(&self.game_scene);
+    }
+    #[func]
+    fn exit_game(&self) {
+        self.base().get_tree().quit();
     }
 }
