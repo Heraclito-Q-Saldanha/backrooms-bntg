@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cgv08mna5b8oh"]
+
+[node name="MainMenu" type="MainMenu" unique_id=620897725]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
