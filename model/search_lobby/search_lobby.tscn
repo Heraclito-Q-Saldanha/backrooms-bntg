@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://s8804ttlqkfm"]
+
+[node name="search_lobby" type="SearchLobby" unique_id=881753192]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background_color" type="ColorRect" parent="." unique_id=249828819]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(9.400537e-09, 0.006555851, 0.015155967, 1)
+
+[node name="margin_container" type="MarginContainer" parent="." unique_id=479001700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="item_list" type="ItemList" parent="margin_container" unique_id=760143790]
+layout_mode = 2
+item_count = 2
+item_0/text = "asdasdasda"
+item_1/text = "asdasd"
