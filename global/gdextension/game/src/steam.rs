@@ -46,14 +46,23 @@ pub enum LobbyEnterResult {
 }
 
 #[derive(GodotClass)]
-#[class(init)]
 pub struct NetworkingMessage {
 	data: Vec<u8>,
-	steam_id: Option<SteamId>,
+	steam_id: SteamId,
 }
 
 enum CallbackValue {
 	LobbyCreated(LobbyEnterResult, LobbyId),
+}
+
+#[godot_api]
+impl IRefCounted for NetworkingMessage {
+	fn init(_: Base<RefCounted>) -> Self {
+		Self {
+			data: Vec::new(),
+			steam_id: SteamId::from_u64(0),
+		}
+	}
 }
 
 #[godot_api]
@@ -175,11 +184,8 @@ impl NetworkingMessage {
 	pub fn data(&self) -> Vec<u8> {
 		self.data.to_vec()
 	}
-}
-
-impl NetworkingMessage {
-	#[inline(always)]
-	pub fn steam_id(&self) -> Option<SteamId> {
+	#[func]
+	pub fn steam_id(&self) -> SteamId {
 		self.steam_id
 	}
 }
@@ -225,7 +231,7 @@ impl From<LobbyType> for steamworks::LobbyType {
 impl From<steamworks::networking_types::NetworkingMessage> for NetworkingMessage {
 	fn from(value: steamworks::networking_types::NetworkingMessage) -> Self {
 		let data = value.data().to_vec();
-		let steam_id = value.identity_peer().steam_id().map(|id| id.into());
+		let steam_id = value.identity_peer().steam_id().map(|id| id.into()).unwrap_or(SteamId::from_u64(0));
 		Self { data, steam_id }
 	}
 }
